@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelSpawner : MonoBehaviour
 {
+    public TextMeshProUGUI _level;
 
     public GameObject[] obstacleModel;
 
@@ -14,15 +17,15 @@ public class LevelSpawner : MonoBehaviour
 
     private GameObject temp1Obstacle, temp2Obstacle;
 
-    private int level = 40, addNumber = 7;
+    private int level = 1, addNumber = 7;
 
     float obstacleNumber;
-
-    
 
     // Start is called before the first frame update
     void Start()
     {
+        level = PlayerPrefs.GetInt("Level", 1);
+
         RandomObstacleGenerator();
         float randomNumber = Random.value;
 
@@ -73,10 +76,9 @@ public class LevelSpawner : MonoBehaviour
         temp2Obstacle.transform.position = new Vector3(0, obstacleNumber - 0.01f, 0);
     }
 
-    // Update is called once per frame  
-    void Update()
+    private void Update()
     {
-        
+        _level.text = level.ToString();
     }
 
     public void RandomObstacleGenerator()
@@ -122,5 +124,11 @@ public class LevelSpawner : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void NextLevel()
+    {
+        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        SceneManager.LoadScene(0);
     }
 }
