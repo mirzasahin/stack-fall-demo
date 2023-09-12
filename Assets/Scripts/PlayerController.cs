@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     float currenTime;
     bool invincible;
 
+    public GameObject fireShield;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,10 +35,19 @@ public class PlayerController : MonoBehaviour
         if(invincible)
         {
             currenTime -= Time.deltaTime * .35f;
+            if (!fireShield.activeInHierarchy)
+            {
+                fireShield.SetActive(true);
+            }
         }
 
         else
         {
+            if(fireShield.activeInHierarchy)
+            {
+                fireShield.SetActive(false);
+            }
+
             if (mouseButtonDown)
             {
                 currenTime += Time.deltaTime * 0.8f;
@@ -51,13 +62,11 @@ public class PlayerController : MonoBehaviour
         {
             currenTime = 1;
             invincible = true;
-            Debug.Log(invincible);
         }
         else if(currenTime <= 0)
         {
             currenTime = 0;
             invincible = false;
-            Debug.Log(invincible);
         }
     }
 
