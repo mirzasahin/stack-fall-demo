@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8256361439460927844}
   m_Layer: 0
   m_Name: win
-  m_TagString: Done
+  m_TagString: plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

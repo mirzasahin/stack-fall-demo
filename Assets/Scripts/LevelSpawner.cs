@@ -14,9 +14,11 @@ public class LevelSpawner : MonoBehaviour
 
     private GameObject temp1Obstacle, temp2Obstacle;
 
-    private int level = 50, addNumber = 7;
+    private int level = 40, addNumber = 7;
 
     float obstacleNumber;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,7 @@ public class LevelSpawner : MonoBehaviour
             }
 
             if (level > 100)
-            {
+            { 
                 temp1Obstacle = Instantiate(obstaclePrefab[Random.Range(3, 4)]);
             }
 
